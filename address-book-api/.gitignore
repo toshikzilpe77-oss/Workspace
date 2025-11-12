@@ -6,14 +6,15 @@ venv/
 Database file
 
 *.db
-!app/address_book.db # Agar aapko database file bhi track karni hai toh is line ko uncomment karein,
-# lekin aamtaur par iski zaroorat nahi hoti.
+!app/address_book.db
 
-Byte-compiled / optimized / DLL files
+Byte-compiled / optimized files
 
 pycache/
 *.pyc
+.pytest_cache/
 
 IDE files (optional)
 
 .vscode/
+.idea/

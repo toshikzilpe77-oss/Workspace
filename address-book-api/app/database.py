@@ -19,10 +19,6 @@ SessionLocal = sessionmaker(
 Base = declarative_base()
 
 def get_db() -> Generator:
-    """
-    Provides a transactional database session for a single request/operation.
-    The session is closed automatically after the 'yield'.
-    """
     db = SessionLocal()
     try:
         yield db

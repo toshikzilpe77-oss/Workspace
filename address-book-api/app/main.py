@@ -21,9 +21,7 @@ app = FastAPI(
           response_model=schemas.Address, 
           status_code=status.HTTP_201_CREATED)
 def create_address_entry(address: schemas.AddressCreate, db: Session = Depends(get_db)):
-    """
-    Creates a new address entry in the database.
-    """
+   
     db_address = models.Address(**address.dict())
     db.add(db_address)
     db.commit()
@@ -34,9 +32,7 @@ def create_address_entry(address: schemas.AddressCreate, db: Session = Depends(g
 @app.get("/addresses/{address_id}", 
          response_model=schemas.Address)
 def get_address_entry(address_id: int, db: Session = Depends(get_db)):
-    """
-    Retrieves a single address entry by its unique ID.
-    """
+   
     db_address = db.query(models.Address).filter(models.Address.id == address_id).first()
     
     if db_address is None:
@@ -48,9 +44,7 @@ def get_address_entry(address_id: int, db: Session = Depends(get_db)):
 @app.put("/addresses/{address_id}", 
         response_model=schemas.Address)
 def update_address_entry(address_id: int, address: schemas.AddressCreate, db: Session = Depends(get_db)):
-    """
-    Updates an existing address entry identified by its ID.
-    """
+   
     db_address = db.query(models.Address).filter(models.Address.id == address_id).first()
     
     if db_address is None:
@@ -68,9 +62,7 @@ def update_address_entry(address_id: int, address: schemas.AddressCreate, db: Se
 @app.delete("/addresses/{address_id}", 
             status_code=status.HTTP_204_NO_CONTENT)
 def delete_address_entry(address_id: int, db: Session = Depends(get_db)):
-    """
-    Deletes an address entry by its ID. Returns 204 No Content on success.
-    """
+  
     db_address = db.query(models.Address).filter(models.Address.id == address_id).first()
     
     if db_address is None:

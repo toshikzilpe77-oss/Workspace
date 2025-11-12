@@ -14,5 +14,4 @@ class Address(Base):
     longitude = Column(Float, index=True, doc="Longitude coordinate (e.g., -118.2437).")
     
     def __repr__(self):
-        """Returns a string representation of the object."""
         return f"<Address(id={self.id}, name='{self.name}', coords=({self.latitude}, {self.longitude}))>"
